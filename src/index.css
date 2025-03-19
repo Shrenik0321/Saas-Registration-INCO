@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Montserrat-Regular';
+	src: url('../fonts/Montserrat-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato-Bold';
+	src: url('../fonts/Lato-Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato-Regular';
+	src: url('../fonts/Lato-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway-Bold';
+	src: url('../fonts/Raleway-VariableFont_wght.ttf');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway-Regular';
+	src: url('../fonts/Raleway-VariableFont_wght.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inter-Regular';
+	src: url('../fonts/Inter-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inter-Medium';
+	src: url('../fonts/Inter-Medium.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inter-SemiBold';
+	src: url('../fonts/Inter-SemiBold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+:root {
+	/* colors  */
+	--lightModeBackground: #f7f7f7;
+	--gray: #707070;
+	--headerBackgroundLight: #ffffff;
+	--contentBackground: #f9f9f9;
+	--blue: #2185d0;
+	--orange: #ff7777;
+	--modalHeader: #f3f3f3;
+	--dark-red: #dd3333;
+	--white: #ffffff;
+	--green: #89bc52;
+	--borderColor: #343434;
+	--black: #000000;
+	--light-blue: #8cb9f5;
+	--yellow: #eaa119;
+
+	/* --light-mode-background: #FCFCFC; */
+	--light-mode-background: #f6f4f4;
+	--dark-blue: #232ed1;
+	--activeMenuItemLight: #6564db;
+	--menuTextLight: #101d42;
+
+	--darkModeBackground: #121212;
+	--containerBackgroundDark: #1d1d1d;
+	--greenShade1: #4fb59d;
+	--greenShade2: #81cab8;
+	--greenShade3: #b2ded4;
+	--coolGray: #8990ad;
+	--yellowShade1: #f3ea71;
+	--tableHeaderColorDark: #393b45;
+	--tableSripedColorDark: #2d2e35;
+
+	/* other */
+	--buttonHeight: calc(26px);
+	--pillButtonHeight: calc(24px);
+	--inputFieldsHeight: calc(24px);
+	--logoHeight: calc(48px);
+	--headerBarHeight: calc(64px);
+	--sidebarWidth: calc(248px);
+	--avatarWidth: calc(36px);
+	--tableRowMinHeight: calc(47px);
+	--tableRowGap: calc(1px);
+	--breadcrumbHeight: calc(48px);
+	--contentDivPadding: calc(12px);
+	--contentDivPaddingRight: calc(15px);
+	--breadcrumbRightPadding: calc(var(--contentDivPadding) - 7px);
+}
+
+#light {
+	background-color: var(--lightModeBackground);
+}
+
+#dark {
+	background-color: var(--darkModeBackground);
+	min-height: 100%;
+}
