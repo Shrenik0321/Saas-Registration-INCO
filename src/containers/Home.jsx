@@ -147,9 +147,12 @@ const Home = () => {
     setLoading(true); // Start loading
 
     try {
-      const response = await axios.post("http://localhost:3003/enroll-client", {
-        addInfo: formData,
-      });
+      const response = await axios.post(
+        "https://cmmsapi.encyte.tech:8093/enroll-client",
+        {
+          addInfo: formData,
+        }
+      );
       console.log(response.data.addedInfo.id);
       toast.success("Enrolled Successfully!");
       navigate("/success", { state: formData }); // Navigate to the next page if needed
