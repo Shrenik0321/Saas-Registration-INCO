@@ -78,19 +78,7 @@ const Home = () => {
   };
 
   const handleSubmit = async () => {
-    const {
-      challenges,
-      spareParts,
-      track,
-      companySize,
-      industry,
-      managesAssets,
-      vendor,
-      priority,
-      parentChild,
-      workshops,
-      moveAssets,
-    } = formData;
+    const { companySize, industry } = formData;
 
     if (companySize === "") {
       toast.error("Please select a company size.");
@@ -100,60 +88,17 @@ const Home = () => {
       toast.error("Please select an industry.");
       return;
     }
-    if (managesAssets === "") {
-      toast.error("Please select an option for asset management.");
-      return;
-    }
-    if (vendor === "") {
-      toast.error("Please select whether you need to manage vendors.");
-      return;
-    }
-    if (priority === "") {
-      toast.error("Please select whether you need to set priority on assets.");
-      return;
-    }
-    if (parentChild === "") {
-      toast.error(
-        "Please select whether you need parent/child asset relationships."
-      );
-      return;
-    }
-    if (workshops === "") {
-      toast.error(
-        "Please select whether you have workshops or service centers."
-      );
-      return;
-    }
-    if (moveAssets === "") {
-      toast.error("Please select whether you frequently move assets.");
-      return;
-    }
 
-    // Validation
-    if (!challenges) {
-      toast.error("Please enter the challenges you're facing.");
-      return;
-    }
-
-    if (!spareParts) {
-      toast.error("Please enter how you manage spare parts and inventory.");
-      return;
-    }
-
-    if (!track) {
-      toast.error("Please specify the KPIs or metrics you want to track.");
-      return;
-    }
     setLoading(true); // Start loading
 
     try {
-      const response = await axios.post(
-        "https://cmmsapi.encyte.tech:8093/enroll-client",
-        {
-          addInfo: formData,
-        }
-      );
-      console.log(response.data.addedInfo.id);
+      await axios.post("http://localhost:3003/enroll-client", {
+        addInfo: formData,
+      });
+      // await axios.post("https://cmmsapi.encyte.tech:8093/enroll-client", {
+      //   addInfo: formData,
+      // });
+
       toast.success("Enrolled Successfully!");
       navigate("/success", { state: formData }); // Navigate to the next page if needed
     } catch (error) {
@@ -173,6 +118,21 @@ const Home = () => {
         <Form onSubmit={handleSubmit} className="w-full space-y-4">
           <Form.Field>
             <label className="block text-sm font-medium text-gray-700">
+              Name:
+            </label>
+            <Input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full"
+              placeholder="Name"
+            />
+          </Form.Field>
+
+          <Form.Field>
+            <label className="block text-sm font-medium text-gray-700">
               Company Name:
             </label>
             <Input
@@ -182,6 +142,7 @@ const Home = () => {
               onChange={handleChange}
               required
               className="w-full"
+              placeholder="Company Name"
             />
           </Form.Field>
 
@@ -196,6 +157,7 @@ const Home = () => {
               onChange={handleChange}
               required
               className="w-full"
+              placeholder="Email"
             />
           </Form.Field>
 
@@ -210,50 +172,6 @@ const Home = () => {
               options={companySizeOptions}
               name="companySize"
               value={formData.companySize}
-              onChange={handleChange}
-              required
-              className="w-full"
-            />
-          </Form.Field>
-
-          <Form.Field>
-            <label className="block text-sm font-medium text-gray-700">
-              What challenges are you facing in your current maintenance
-              management process?
-            </label>
-            <Input
-              type="text"
-              name="challenges"
-              value={formData.challenges}
-              onChange={handleChange}
-              required
-              className="w-full"
-            />
-          </Form.Field>
-
-          <Form.Field>
-            <label className="block text-sm font-medium text-gray-700">
-              How do you manage spare parts and inventory?
-            </label>
-            <Input
-              type="text"
-              name="spareParts"
-              value={formData.spareParts}
-              onChange={handleChange}
-              required
-              className="w-full"
-            />
-          </Form.Field>
-
-          <Form.Field>
-            <label className="block text-sm font-medium text-gray-700">
-              Do you have specific KPIs or metrics you want to track using our
-              system?
-            </label>
-            <Input
-              type="text"
-              name="track"
-              value={formData.track}
               onChange={handleChange}
               required
               className="w-full"
@@ -289,91 +207,6 @@ const Home = () => {
               options={manageOptions1}
               name="managesAssets"
               value={formData.managesAssets}
-              onChange={handleChange}
-              required
-              className="w-full"
-            />
-          </Form.Field>
-
-          <Form.Field>
-            <label className="block text-sm font-medium text-gray-700">
-              Do you need to manage vendors?
-            </label>
-            <Dropdown
-              placeholder="Select Yes or No"
-              fluid
-              selection
-              options={manageOptions2}
-              name="vendor"
-              value={formData.vendor}
-              onChange={handleChange}
-              required
-              className="w-full"
-            />
-          </Form.Field>
-
-          <Form.Field>
-            <label className="block text-sm font-medium text-gray-700">
-              Do you need to set priority on assets?
-            </label>
-            <Dropdown
-              placeholder="Select Yes or No"
-              fluid
-              selection
-              options={manageOptions2}
-              name="priority"
-              value={formData.priority}
-              onChange={handleChange}
-              required
-              className="w-full"
-            />
-          </Form.Field>
-
-          <Form.Field>
-            <label className="block text-sm font-medium text-gray-700">
-              Do you need parent-asset/child-asset relationships?
-            </label>
-            <Dropdown
-              placeholder="Select Yes or No"
-              fluid
-              selection
-              options={manageOptions2}
-              name="parentChild"
-              value={formData.parentChild}
-              onChange={handleChange}
-              required
-              className="w-full"
-            />
-          </Form.Field>
-
-          <Form.Field>
-            <label className="block text-sm font-medium text-gray-700">
-              Do you have workshops or service centers?
-            </label>
-            <Dropdown
-              placeholder="Select Yes or No"
-              fluid
-              selection
-              options={manageOptions2}
-              name="workshops"
-              value={formData.workshops}
-              onChange={handleChange}
-              required
-              className="w-full"
-            />
-          </Form.Field>
-
-          <Form.Field>
-            <label className="block text-sm font-medium text-gray-700">
-              Do you frequently move assets between workshops or sites?
-            </label>
-            <Dropdown
-              placeholder="Select Yes or No"
-              fluid
-              selection
-              options={manageOptions2}
-              name="moveAssets"
-              value={formData.moveAssets}
               onChange={handleChange}
               required
               className="w-full"
