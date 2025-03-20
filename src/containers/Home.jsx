@@ -168,11 +168,7 @@ const Home = () => {
     <>
       {loading && <FullPageLoader text="test" />}
       <div className="flex flex-col items-center mx-auto my-10 w-full max-w-3xl p-6 bg-white shadow-lg rounded-lg">
-        <img
-          src="./src/images/blue.png"
-          alt="FieldSmart Logo"
-          className="w-48 mb-6"
-        />
+        <img src="/blue.png" alt="FieldSmart Logo" className="w-1/2 mb-6" />
 
         <Form onSubmit={handleSubmit} className="w-full space-y-4">
           <Form.Field>
